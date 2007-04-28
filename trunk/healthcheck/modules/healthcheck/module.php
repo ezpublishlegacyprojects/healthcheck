@@ -8,7 +8,11 @@ $ViewList['overview'] = array( "default_navigation_part" => "healthchecknavigati
                                   "script" => "overview.php" );
 
 $ViewList['inisettings'] = array( "default_navigation_part" => "healthchecknavigationpart",
-                                  "script" => "inisettings.php" );
+                                  "script" => "inisettings.php", 
+                                  'single_post_actions' => array( 'SetButton' => 'Set' ),
+                                  'post_action_parameters' => array( 'Set' => array( 'SiteAccess' => 'SiteAccess' ) ),
+                                  'params' => array() );
+
 
 $ViewList['environment'] = array( "default_navigation_part" => "healthchecknavigationpart",
                                   "script" => "environment.php" );

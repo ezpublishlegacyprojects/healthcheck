@@ -73,19 +73,20 @@
 <div class="controlbar">
 <div class="box-bc"><div class="box-ml"><div class="box-mr"><div class="box-tc"><div class="box-bl"><div class="box-br">
 
-{* FIXME: Disabled for the moment - implement siteaccess selection
-{def $siteaccesslist=ezini( 'SiteAccessSettings', 'AvailableSiteAccessList' )}
+{def $siteaccesslist=ezini( 'SiteAccessSettings', 'AvailableSiteAccessList' )
+     $current_siteaccess=ezpreference('admin_healthcheck_siteaccess')}
+<form name="healthchecksiteaccess" action={'healthcheck/inisettings'|ezurl} method="post">
 <div class="block">
-<label for="siteaccesslist">Siteaccess:</label>
-<select name="siteaccesslist"{eq( $ui_context, 'edit' )|choose( '', ' disabled="disabled"' )}>
-        <option {if eq( $currentsiteaccess, 'global')} selected="selected"{/if}>Global</option>
+<label for="siteaccess">Siteaccess:</label>
+<select name="SiteAccess"{eq( $ui_context, 'edit' )|choose( '', ' disabled="disabled"' )}>
+        <option value="global" {if eq( $current_siteaccess, 'global')} selected="selected"{/if}>Global</option>
 {foreach $siteaccesslist as $siteaccess}
-        <option {if eq( $currentsiteaccess, $siteaccess )} selected="selected"{/if}>{$siteaccess|wash}</option>
+        <option value="{$siteaccess}" {if eq( $current_siteaccess, $siteaccess )} selected="selected"{/if}>{$siteaccess|wash}</option>
 {/foreach}
 </select>
 <input class='button' type="submit" name="SetButton" value="Set" />
 </div>
-*}
+</form>
 
 </div></div></div></div></div></div>
 </div>

@@ -2,9 +2,19 @@
 include_once( 'lib/ezutils/classes/ezfunctionhandler.php' );
 include_once( 'kernel/common/template.php' );
 include_once( 'lib/ezutils/classes/ezini.php' );
+include_once( 'kernel/classes/ezpreferences.php' );
 include_once( 'extension/healthcheck/classes/healthcheckfunctioncollection.php' );
 
-$checkResults = HealthCheckFunctionCollection::runeZINIChecks();
+$http = eZHTTPTool::instance();
+$module =& $Params['Module'];
+
+$siteAccess = $module->actionParameter( 'SiteAccess' );
+if( !$siteAccess ) {
+    $siteAccess = 'global';
+}
+eZPreferences::setValue( 'admin_healthcheck_siteaccess', $siteAccess );
+
+$checkResults = HealthCheckFunctionCollection::runeZINIChecks( $siteAccess );
 
 $tpl =& templateInit();
 $tpl->setVariable( 'results', $checkResults );

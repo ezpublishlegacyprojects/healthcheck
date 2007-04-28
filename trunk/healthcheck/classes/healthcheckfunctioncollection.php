@@ -39,9 +39,10 @@ class HealthCheckFunctionCollection {
      * Execute tests on the system INI files as defined by the 
      * [inisettings] block in healthcheck.ini
      */
-    function runeZINIChecks() {
+    function runeZINIChecks( $siteAccess = 'global' ) {
 
         $myIni =& eZINI::instance( 'healthcheck.ini' );
+        
         if ( get_class( $myIni ) != "ezini" ) {
             eZDebug::writeError( 'healthcheck.ini can not be found.', 'HealthCheckFunctionCollection::runSystemINIChecks()' );
             return false;
@@ -56,8 +57,17 @@ class HealthCheckFunctionCollection {
         $checkResults = array();
 
         foreach( $checks as $check ) {
-            $testIni =& eZINI::instance( $check[1] );
-            $currentValue = $testIni->variable( $check[2], $check[3] );
+
+            $iniPath = ( $siteAccess == "global" ) ? "settings/override" : "settings/siteaccess/$siteAccess";
+            $baseIni =& eZINI::instance( $check[1] );
+            $accessIni =& eZINI::instance( $check[1] . 'append', $iniPath, null, null, null, true, true );
+
+            if( $accessIni->hasVariable( $check[2], $check[3] ) ) {
+                $currentValue = $accessIni->variable( $check[2], $check[3] );
+            } else {
+                $currentValue = $baseIni->variable( $check[2], $check[3] );
+            }
+
             if( HealthCheckFunctionCollection::getCheckResult( $check[0], $check[4], $currentValue ) ) {
                 $checkResult = array ( 
                     "result" => "pass",

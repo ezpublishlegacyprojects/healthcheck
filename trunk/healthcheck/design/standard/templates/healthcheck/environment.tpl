@@ -2,7 +2,7 @@
 <!--header start-->
 <div class="box-header"><div class="box-tc"><div class="box-ml"><div class="box-mr"><div class="box-tl"><div class="box-tr">
 
-<h2 class="context-title">{"INI Settings"|i18n('healthcheck')}</h2>
+<h2 class="context-title">{"PHP Settings"|i18n('healthcheck')}</h2>
 <!--<div class="header-mainline"></div>-->
 
 </div></div></div></div></div></div><!-- header end -->
