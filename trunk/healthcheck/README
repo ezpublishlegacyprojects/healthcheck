@@ -1,0 +1,11 @@
+This is an extension that will run some basic checks on your eZ Publish
+installation and server setup, and see that it complies to the performance
+standards detailed on ez.no and ezpedia.org. It adds a new tab to the
+administration interface which can be used to check various aspects of the
+system setup.
+
+It is currently quite incomplete and alpha quality. Any suggestions for tests
+are welcome.
+
+Based on an idea by Kristian Hole, relayed via kracker to Michael Maclean
+<michael@emcuk.com> who started coding.

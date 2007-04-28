@@ -1,0 +1,13 @@
+TODO
+
+* Implement environment checks
+* Implement siteaccess selection for INI checks
+* Make the translation of the test types to real language a bit nicer
+* Add more tests (suggestions welcome!)
+* Colour code the test results
+* Sort test results by priority
+* Provide explanations for each test (perhaps links to ez.no or wherever appropriate)
+* Var directory is the same for admin and user siteaccess
+* AvailableSiteDesigns set correctly for pre 3.8
+* RelatedSiteaccessList set correctly for 3.8 and above
+* AvailableSiteDesigns[] list in content.ini complete
