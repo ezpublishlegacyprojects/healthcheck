@@ -9,7 +9,7 @@ $checkResults = HealthCheckFunctionCollection::runeZINIChecks();
 $tpl =& templateInit();
 $tpl->setVariable( 'results', $checkResults );
 
-$Result['path'] = array( array( 'url' => '/healthcheck', 'text' => "System Health Check" ),
+$Result['path'] = array( array( 'url' => '/healthcheck/overview', 'text' => "System Health Check" ),
                          array( 'url' => false, 'text' => 'INI Settings' ) );
 $Result['content'] = $tpl->fetch( 'design:healthcheck/inisettings.tpl' );
 $Result['left_menu'] = 'design:healthcheck/menu.tpl';
